@@ -1,0 +1,37 @@
+﻿
+        var catalog = {
+            constructor: function(id,name,price,type) {
+                this.Id = id;
+                this.Name = name;
+                this.Price = price;
+                this.Type = type;
+
+            },
+
+            getItem:function(){
+                console.log(this.Id + ", " + this.Name + "," + this.Price + "," + this.Type);
+            }
+
+        }
+
+
+
+var item = Object.create(catalog);
+item.constructor(555, 'lapy', 40000, 'electric')
+item.getItem()
+
+
+var catalog1 = Object.create(catalog);
+
+catalog1.getItem = function () {
+    this.age = 24;
+    return catalog.getItem.call(this);
+}
+
+
+var item2 = Object.create(catalog1);
+item2.constructor(888, 'computer', 30000, 'electric');
+item2.getItem();
+
+
+
